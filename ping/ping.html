@@ -1,0 +1,62 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Webmonitor Ping", {
+        category: "Airship Webmonitor",
+        icon: "icons/airship.svg",
+        color: '#E7E7AE',
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ['success', 'error'],
+        defaults: {
+            name: { value: "" },
+            uniqueID: { value: "" },
+            token: { value: "" },
+            url: {value: ""}
+        },
+        label: function () {
+            return this.name || "Webmonitor Ping"
+        }
+    });
+</script>
+
+
+<script type="text/x-red" data-template-name="Webmonitor Ping">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-uniqueID"><i class="fa fa-tag"></i> Unique ID</label>
+        <input type="text" id="node-input-uniqueID" placeholder="Unique ID">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-token"><i class="fa fa-tag"></i> Security Token</label>
+        <input type="text" id="node-input-token" placeholder="Security Token">
+    </div>
+
+   
+</script>
+
+<script type="text/x-red" data-help-name="Webmonitor Ping">
+    <p>This Node will receive data and send to Airship Web Monitor </p>
+
+    <h3>Input msg</h3>
+        
+    <pre>
+        // All fields can be passed on msg.fied_name as below, or from the dropdown.
+        // All fields besides url are mandatory.
+        
+        uniqueID: '123456', ID identifier for the web monitor.
+        token: "mytoken"  Security token for the webmonitor.
+        url: Change the default url of the webmonitor (http://10.6.0.1:1990/wm).
+    </pre>
+
+    <h3>Outputs:</h3>
+    <ul>
+        <li>1. success response from webmonitor</li>
+        <li>2. error </li>
+    </ul>
+
+
+</script>

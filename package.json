@@ -1,0 +1,30 @@
+{
+  "name": "node-red-contrib-airship-webmonitor-ping",
+  "version": "1.0.0",
+  "description": "A node to send pings to web monitor",
+  "node-red": {
+    "nodes": {
+      "ping": "ping/ping.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airshipteam/ode-red-contrib-airship-webmonitor-ping"
+  },
+  "homepage": "https://github.com/airshipteam/ode-red-contrib-airship-webmonitor-ping",
+  "bugs": {
+    "url": "https://github.com/airshipteam/ode-red-contrib-airship-webmonitor-ping"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Airship",
+    "Node-RED"
+  ],
+  "author": "Andre Guerra",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
