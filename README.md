@@ -1,4 +1,4 @@
-# node-red-contrib-airship-rest
+# node-red-contrib-airship-webmonitor-ping
 
 Node for Airship Node-RED Webmonitor 
 
