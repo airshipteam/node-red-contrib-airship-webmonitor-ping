@@ -5,9 +5,9 @@ module.exports = function (RED) {
 
         RED.nodes.createNode(this, n);
 
-        this.uniqueID   = n.uniqueID;
-        this.token      = n.token;
-        this.url        = n.url;
+        this.uniqueID      = n.uniqueID;
+        this.token         = n.token;
+        this.webMonitorURL = n.webMonitorURL;
 
         this.status({});
 
@@ -58,7 +58,7 @@ module.exports = function (RED) {
             }
 
             this.showstatus("yellow", "dot", "Pinging webmonitor");
-            let url = msg.url ? msg.url : this.url;
+            let url = msg.webMonitorURL ? msg.webMonitorURL : this.webMonitorURL;
 
             if (url === undefined || url === "") url = 'http://10.6.0.1:1990/wm';
             
