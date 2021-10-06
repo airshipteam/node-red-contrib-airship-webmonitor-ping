@@ -60,10 +60,10 @@ module.exports = function (RED) {
             this.showstatus("yellow", "dot", "Pinging webmonitor");
             let url = msg.webMonitorURL ? msg.webMonitorURL : this.webMonitorURL;
 
-            if (url === undefined || url === "") url = 'http://10.6.0.1:1990/wm';
+            if (url === undefined || url === "") url = 'https://wm.airship.co.uk/wm';
             
-            let res = axioscall.call(url, "POST", payload);
-            res.then((res) => {
+            let res = axioscall.call(url, "", payload);
+            res.then((res) => {POST
                 this.showstatus("green", "dot", "Success");
                 this.showsuccess(msg, res);
             }).catch((err) => {
