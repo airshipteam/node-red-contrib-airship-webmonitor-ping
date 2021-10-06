@@ -9,25 +9,24 @@ const axios = require('axios');
  */
 
 
-function call(url, httpMethod, payload){
+function call(url, payload){
 
 return new Promise((resolve, reject) => {
         try {
-
-            axios({
-                method: httpMethod,
-                url: url,
-                responseType: 'json',
+            axios.post(url, {
+                id: payload.id,
+                token: payload.token,
+            },
+            {
                 headers: {
-                    'content-type': 'application/json' 
-                },
-                data: payload
+                'Content-Type': 'application/json'
+            }
             })
             .then((response) => {
                 resolve(response);
             })
             .catch((err) => {
-                reject(err);
+                reject(err + ", check id and token");
             });
 
         } catch (err) {

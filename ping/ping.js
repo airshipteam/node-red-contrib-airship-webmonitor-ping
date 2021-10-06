@@ -11,7 +11,6 @@ module.exports = function (RED) {
 
         this.status({});
 
-
         /**
          * Shows a status visual on the node
          * @param  {[string]} colour [colour of status (green, yellow, red)]
@@ -57,23 +56,27 @@ module.exports = function (RED) {
                 token: this.token
             }
 
-            this.showstatus("yellow", "dot", "Pinging webmonitor");
-            let url = msg.webMonitorURL ? msg.webMonitorURL : this.webMonitorURL;
+            if (payload && payload.id && payload.token) {
 
-            if (url === undefined || url === "") url = 'https://wm.airship.co.uk/wm';
-            
-            let res = axioscall.call(url, "", payload);
-            res.then((res) => {POST
-                this.showstatus("green", "dot", "Success");
-                this.showsuccess(msg, res);
-            }).catch((err) => {
-                this.showstatus("red", "dot", "Error");
-                this.showerror(msg, err);
-            }).finally(() => {
-            });
+                this.showstatus("yellow", "dot", "Pinging web monitor");
+                let url = msg.webMonitorURL ? msg.webMonitorURL : this.webMonitorURL;
+
+                if (url === undefined || url === "") url = 'https://wm.airship.co.uk/wm';
+
+                let res = axioscall.call(url, payload);
+                res.then((res) => {
+                    this.showstatus("green", "dot", "Success");
+                    this.showsuccess(msg, res);
+                }).catch((err) => {
+                    this.showstatus("red", "dot", "Error");
+                    this.showerror(msg, err);
+                });
+            }
+            else {
+                this.showerror(msg, "UniqueID and Token are mandatory.");
+            }
 
         });
-
 
     }
     RED.nodes.registerType("Webmonitor Ping", WebmonitorPing);
